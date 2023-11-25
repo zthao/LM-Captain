@@ -28,6 +28,13 @@ export const router = createRouter({
           }
         },
         {
+          path: '/now',
+          name: 'now',
+          meta: {
+            pos: '#now'
+          }
+        },
+        {
           path: '/roll',
           name: 'Roll',
           component: () => import('./pages/Roll.vue'),

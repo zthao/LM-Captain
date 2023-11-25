@@ -47,7 +47,6 @@ const selectDate = computed({
   }
 });
 
-const jumpNow = 
 const handleExportCSV = (record: Record) => {
   const fmtDate = format(record.date, 'yyyy年MM月dd日');
   exportCSV(

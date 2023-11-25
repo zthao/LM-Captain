@@ -70,7 +70,7 @@ const handleExportExcel = (record: Record) => {
           <span>{{ format(current.date, 'yyyy 年 M 月 d 日') }}</span>
         </div>
         <div mt="4">
-          <c-button success @click="router.push('/now.html')" mr="2">即时舰长列表</c-button>
+          <c-button success mr="2"><router-link to="/now.html">即时舰长列表</router-link></c-button>
           <c-button success @click="mode = 'roll'" v-if="!!gift" mr="2">抽奖</c-button>
           <c-button success @click="handleExportCSV(current)" mr="2">导出 CSV</c-button>
           <c-button success @click="handleExportExcel(current)">导出 Excel</c-button>

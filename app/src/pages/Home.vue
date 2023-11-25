@@ -85,6 +85,9 @@ const handleExportExcel = (record: Record) => {
             @click="mode = 'day'"
           />
         </div>
+        <div mt="4" pt="4" border border-0 border-t border-light-800>
+          <span>2023 年 11 月 25 日以前数据不全</span>
+        </div>
       </div>
     </div>
 

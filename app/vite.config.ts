@@ -23,6 +23,7 @@ export default defineConfig({
     __GITHUB_REPOSITORY__: JSON.stringify(process.env.GITHUB_REPOSITORY),
     __BUILD_TIME__: `"${new Date().toISOString()}"`
   },
+  base: "/LM-Captain/",
   plugins: [
     vue(),
     Icons(),

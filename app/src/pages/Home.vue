@@ -12,12 +12,14 @@ import { exportCSV, exportExcel } from '../utils';
 const router = useRouter();
 
 const current = useCurrent();
-const mode = ref<'day' | 'sum' | 'roll'>('day');
+const mode = ref<'day' | 'sum' | 'now'| 'roll'>('day');
 watch(mode, (mode) => {
   if (mode === 'day') {
     router.push({ name: 'Record' });
   } else if (mode === 'sum') {
     router.push({ name: 'Summary' });
+  } else if (mode === 'now') {
+    router.push({ name: 'Now' });
   } else {
     router.push({ name: 'Roll' });
   }
@@ -70,7 +72,7 @@ const handleExportExcel = (record: Record) => {
           <span>{{ format(current.date, 'yyyy 年 M 月 d 日') }}</span>
         </div>
         <div mt="4">
-          <c-button success @click="window.open('/now', '_blank');" mr="2">即时舰长列表</c-button>
+          <c-button success @click="mode = 'now'" mr="2">即时舰长列表</c-button>
           <c-button success @click="mode = 'roll'" v-if="!!gift" mr="2">抽奖</c-button>
           <c-button success @click="handleExportCSV(current)" mr="2">导出 CSV</c-button>
           <c-button success @click="handleExportExcel(current)">导出 Excel</c-button>

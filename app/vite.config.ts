@@ -14,9 +14,9 @@ import Icons from 'unplugin-icons/vite';
 
 import fetchCaptain from './plugin';
 
-const ruid = +(process.env.RUID ?? 477317922);
+const ruid = +(process.env.RUID ?? 72960);
 
-const roomid = +(process.env.ROOM_ID ?? 21672023);
+const roomid = +(process.env.ROOM_ID ?? 18060);
 
 export default defineConfig({
   define: {
@@ -34,7 +34,7 @@ export default defineConfig({
       data: path.join(__dirname, '../data'),
       roomid,
       ruid,
-      gift: { name: '毛线毛裤' }
+      gift: { name: '毛线毛衣' }
     })
   ],
   build: {

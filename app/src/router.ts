@@ -49,6 +49,11 @@ export const router = createRouter({
       path: '/captain/:user',
       name: 'Captain',
       component: Captain
+    },
+    {
+      path: '/pages/now',
+      name: 'Now',
+      component: () => import('./pages/Now.vue'),
     }
   ],
   scrollBehavior(to, from, savedPosition) {

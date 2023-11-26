@@ -13,6 +13,7 @@ import {
 import Icons from 'unplugin-icons/vite';
 
 import fetchCaptain from './plugin';
+import fetchCaptainNow from './fetchCaptainNow';
 
 const ruid = +(process.env.RUID ?? 72960);
 
@@ -35,6 +36,10 @@ export default defineConfig({
       roomid,
       ruid,
       gift: { name: '毛线毛衣' }
+    }),
+    fetchCaptainNow({
+      roomid,
+      ruid
     })
   ],
   build: {

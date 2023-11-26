@@ -54,7 +54,13 @@ export const router = createRouter({
       path: '/pages/now',
       name: 'Now',
       component: () => import('./pages/Now.vue'),
+    },
+    {
+      path: '/pages/nowmoblie',
+      name: 'NowMoblie',
+      component: () => import('./pages/NowMoblie.vue'),
     }
+    
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.meta.pos) {

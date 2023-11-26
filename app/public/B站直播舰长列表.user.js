@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         B站直播舰长列表
 // @namespace    lm-captain.pages.dev
-// @version      0.0.0.1
+// @version      0.0.0.2
 // @description  try to take over the world!
 // @author       zthao
 // @match        https://lm-captain.pages.dev/now
+// @match        https://lm-captain.pages.dev/pages/now
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=pages.dev
-// @require      https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js
 // @grant        GM_xmlhttpRequest
 // @connect      api.live.bilibili.com
 // ==/UserScript==
@@ -16,10 +16,10 @@ const ruid = 72960;
 (function() {
     'use strict';
 
-    $(document).ready(function(){
+    window.onload = function(){
         document.querySelector("#tips").remove()
-        start();
-    });
+        start()
+    };
 })();
 async function retry(fn, count = 3) {
     for (let i = 0, time = 1000; i < count; i++) {

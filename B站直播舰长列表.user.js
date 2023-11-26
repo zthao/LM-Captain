@@ -1,26 +1,42 @@
 // ==UserScript==
 // @name         B站直播舰长列表
 // @namespace    lm-captain.pages.dev
-// @version      0.0.0.2
+// @version      0.0.0.3
 // @description  try to take over the world!
 // @author       zthao
 // @match        https://lm-captain.pages.dev/now
 // @match        https://lm-captain.pages.dev/pages/now
+// @match        https://lm-captain.pages.dev/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=pages.dev
 // @grant        GM_xmlhttpRequest
 // @connect      api.live.bilibili.com
 // ==/UserScript==
-const $ = window.jQuery;
 const roomid = 18060;
 const ruid = 72960;
 (function() {
     'use strict';
 
-    window.onload = function(){
-        document.querySelector("#tips").remove()
-        start()
-    };
+    if (document.location.pathname=="/pages/now"){
+        timeout();
+    }else{
+        let old=history.pushState
+        history.pushState=function(...arg){
+            console.log(arg[0].current);
+            if (arg[0].current=="/pages/now"){
+                setTimeout(timeout,100);
+            }
+            return old.call(this,...arg);
+        }
+    }
 })();
+function timeout(){
+    if (document.querySelector("#tips")){
+        document.querySelector("#tips").style.display="none";
+        start();
+    }else{
+        setTimeout(timeout,100);
+    }
+}
 async function retry(fn, count = 3) {
     for (let i = 0, time = 1000; i < count; i++) {
         try {
@@ -88,7 +104,7 @@ class Client {
             }
         }
         catch (error) {
-            return error
+            return error;
         }
     }
     async get() {
@@ -113,7 +129,7 @@ async function start(){
     var list = await client.get();
     let cnt = 1;
     const width = String(list.length).length;
-    p.innerText="请使用Ctrl+F搜索"
+    p.innerText="请使用Ctrl+F搜索\n抓取时间："+new Date().toTimeString().substr(0, 8);
     for (const user of list) {
         //console.log(`${padLeft(String(cnt++), width)}. ${getType(user.level)} ${user.username} (uid: ${user.uid})`);
         var li = document.createElement('li');

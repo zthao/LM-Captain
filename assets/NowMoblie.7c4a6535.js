@@ -1,1 +1,0 @@
-import{o as n,a}from"./index.f7109acc.js";var s=(e,t)=>{const o=e.__vccOpts||e;for(const[r,c]of t)o[r]=c;return o};const _={},i={id:"list"};function f(e,t){return n(),a("div",i)}var d=s(_,[["render",f]]);export{d as default};

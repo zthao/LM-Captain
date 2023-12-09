@@ -4,6 +4,7 @@ import Home from './pages/Home.vue';
 import Captain from './pages/Captain.vue';
 import CaptainList from './pages/CaptainList.vue';
 import CaptainSummary from './pages/CaptainSummary.vue';
+import Now from './pages/Now.vue';
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -53,7 +54,7 @@ export const router = createRouter({
     {
       path: '/pages/now',
       name: 'Now',
-      component: () => import('./pages/Now.vue'),
+      component: Now
     },
     {
       path: '/pages/nowmoblie',

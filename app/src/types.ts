@@ -45,3 +45,8 @@ export interface UpInfo {
    */
   like_num: number;
 }
+export interface User {
+  uid: number;
+  username: string;
+  level?: number;
+}

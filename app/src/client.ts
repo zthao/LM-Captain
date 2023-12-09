@@ -15,7 +15,7 @@ export class Client {
   private async fetch(page: number): Promise<Array<User & { guard_level: number }>> {
     try {
       const { data } = await retry(() =>
-        axios.get('https://pikpak.tz06.workers.dev/api.live.bilibili.com/guard/topList', {//https://api.live.bilibili.com/guard/topList
+        axios.get('https://cf-cross.tz06.workers.dev/bgm/guard/topList', {//https://api.live.bilibili.com/guard/topList
           params: {
             roomid: this.roomid,
             ruid: this.ruid,

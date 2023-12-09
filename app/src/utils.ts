@@ -45,7 +45,7 @@ export function exportExcel(filename: string, sheetname: string, sheet: any[]) {
   el.click();
   document.body.removeChild(el);
 }
-export async function retry<T>(fn: () => Promise<T>, count = 5) {
+export async function retry<T>(fn: () => Promise<T>, count = 1) {
   for (let i = 0, time = 1000; i < count; i++) {
     try {
       const r = await fn();

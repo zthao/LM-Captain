@@ -13,7 +13,6 @@ import {
 import Icons from 'unplugin-icons/vite';
 
 import fetchCaptain from './plugin';
-import fetchCaptainNow from './fetchCaptainNow';
 
 const ruid = +(process.env.RUID ?? 72960);
 
@@ -22,7 +21,9 @@ const roomid = +(process.env.ROOM_ID ?? 18060);
 export default defineConfig({
   define: {
     __GITHUB_REPOSITORY__: JSON.stringify(process.env.GITHUB_REPOSITORY),
-    __BUILD_TIME__: `"${new Date().toISOString()}"`
+    __BUILD_TIME__: `"${new Date().toISOString()}"`,
+    __ROOM_ID__: JSON.stringify(roomid),
+    __RUID__: JSON.stringify(ruid)
   },
   plugins: [
     vue(),
@@ -36,13 +37,19 @@ export default defineConfig({
       roomid,
       ruid,
       gift: { name: '毛线毛衣' }
-    }),
-    fetchCaptainNow({
-      roomid,
-      ruid
     })
   ],
   build: {
-    outDir: path.join(__dirname, '../dist')
+    outDir: path.join(__dirname, '../dist'),
+    //chunkSizeWarningLimit: 1700
+  },
+  server: { 
+    proxy: {
+      '/api': {
+        target: 'https://api.live.bilibili.com',	
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      },
+    }
   }
 });

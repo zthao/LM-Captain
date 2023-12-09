@@ -15,15 +15,15 @@ interface Option {
 export default function fetchCaptainNow(option: Option): Plugin[] {
   return [
     {
-      name: 'captain',
+      name: 'captainnow',
       resolveId(id) {
-        if (id === '~captain') {
-          return 'captain.json';
+        if (id === '~captainnow') {
+          return 'captainnow.json';
         }
       },
       async load(id) {
-        if (id === 'captain.json') {
-          const data = loadCaptain(option.data);
+        if (id === 'captainnow.json') {
+          const data = loadCaptain(option.roomid);
           const up = await loadUp(option.ruid);
           return JSON.stringify({ data, up, gift: option.gift }, null, 2);
         }

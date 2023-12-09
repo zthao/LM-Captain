@@ -13,6 +13,7 @@ const getGuardImg = (type: string) => {
 </script> 
 <template>
     <div id="summary" class="list" w="full" overflow="auto">
+        <div id="tips">请不要频繁刷新，免费服务器有限制</div>
         <h2 mt="1">即时舰长列表</h2>
         <table rounded border border-collapse w="full">
             <thead>

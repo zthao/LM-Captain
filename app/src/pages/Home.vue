@@ -12,7 +12,7 @@ import { exportCSV, exportExcel } from '../utils';
 const router = useRouter();
 
 const current = useCurrent();
-const mode = ref<'day' | 'sum' | 'now'| 'roll'>('day');
+const mode = ref<'day' | 'sum' | 'now' | 'roll'>('day');
 watch(mode, (mode) => {
   if (mode === 'day') {
     router.push({ name: 'Record' });

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { Client, getType } from '../client';
-const roomid = __ROOM_ID__;//core.getInput('roomid');
-const ruid = __RUID__;//core.getInput('ruid');
-const client = new Client(roomid, ruid);
+import { Client_PHP, getType } from '../client';
+const roomid = __ROOM_ID__;
+const ruid = __RUID__;
+const client = new Client_PHP(roomid, ruid);
 const list = await client.get();
-console.log(list);
 const getGuardImg = (type: string) => {
     if (type === '总督') return '/guard-1.png';
     else if (type === '提督') return '/guard-2.png';
@@ -13,7 +12,9 @@ const getGuardImg = (type: string) => {
 </script> 
 <template>
     <div id="summary" class="list" w="full" overflow="auto">
-        <div id="tips">请不要频繁刷新，免费服务器有限制</div>
+        <div id="tips">
+            <p>请不要频繁刷新，免费服务器有流量限制</p>
+        </div>
         <h2 mt="1">即时舰长列表</h2>
         <table rounded border border-collapse w="full">
             <thead>

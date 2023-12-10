@@ -5,6 +5,9 @@ import Captain from './pages/Captain.vue';
 import CaptainList from './pages/CaptainList.vue';
 import CaptainSummary from './pages/CaptainSummary.vue';
 import Now from './pages/Now.vue';
+import Now_cloudflare from './pages/Now_cloudflare.vue';
+import Now_tampermonkey from './pages/Now_tampermonkey.vue';
+import Now_phpproxy from './pages/Now_phpproxy.vue';
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -57,9 +60,19 @@ export const router = createRouter({
       component: Now
     },
     {
-      path: '/pages/nowmoblie',
-      name: 'NowMoblie',
-      component: () => import('./pages/NowMoblie.vue'),
+      path: '/pages/now/cloudflare',
+      name: 'Now_cloudflare',
+      component: Now_cloudflare
+    },
+    {
+      path: '/pages/now/tampermonkey',
+      name: 'Now_tampermonkey',
+      component: Now_tampermonkey
+    },
+    {
+      path: '/pages/now/phpproxy',
+      name: 'Now_phpproxy',
+      component: Now_phpproxy
     }
     
   ],

@@ -1,23 +1,26 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { defineAsyncComponent } from 'vue';
-const Now = defineAsyncComponent(() => import('./NowMoblie.vue'))
+import { computed, ref, watch } from 'vue';
 const router = useRouter();
-console.log(__ROOM_ID__);
-console.log(__RUID__);
-const roomid = __ROOM_ID__;//core.getInput('roomid');
-const ruid = __RUID__;//core.getInput('ruid');
+const mode = ref<'cloudflare' | 'tampermonkey' | 'PHP'>('cloudflare');
+watch(mode, (mode) => {
+  if (mode === 'cloudflare') {
+    router.push({ name: 'Now_cloudflare' });
+  } else if (mode === 'tampermonkey') {
+    router.push({ name: 'Now_tampermonkey' });
+  } else if (mode === 'PHP') {
+    router.push({ name: 'Now_phpproxy' });
+  } else {
+    router.push({ name: 'Roll' });
+  }
+});
 </script>
 <template>
-    <!--<div id="tips"><a href="..//B站直播舰长列表.user.js">请先安装脚本</a><br><div @click="router.push({ name: 'NowMoblie' });">手机请点这里</div></div>-->
-    <!-- <div id="list"></div> -->
-    <div id="tips">请不要频繁刷新，免费服务器有限制</div>
-    <Suspense>
-        <template #default>
-            <Now />
-        </template>
-        <template #fallback>
-            <div id="tips">正在加载...</div>
-        </template>
-    </Suspense>
+    <h2 mt="1">即时舰长列表</h2>
+    <div mt="4">
+        <c-button success @click="mode = 'cloudflare'" mr="2">cloudflare反代(需要科学上网)</c-button><br><br>
+        <c-button success @click="mode = 'tampermonkey'" mr="2">tampermonkey脚本(本地请求)</c-button><br><br>
+        <c-button success @click="mode = 'PHP'" mr="2">PHP-proxy(小水管)</c-button><br><br>
+        <c-button success @click="mode = 'tampermonkey'" mr="2">导出 Excel</c-button><br><br>
+    </div>
 </template>
